@@ -13,7 +13,7 @@ ARG version="v4"
 
 # update debian and install packages
 RUN apt-get update && apt-get -y upgrade \
-    apt-apt-get -y install apache2 npm ruby-sass git \
+    apt-apt -y install apache2 npm ruby-sass git \
     rm /var/www/index.html
 
 #create dirs and add config
