@@ -1,5 +1,5 @@
 {
-  "dataPath": "https://map.freifunk-essen.de/data/",
+  "dataPath": "https://nodes.freifunk-essen.de/data/",
   "siteName": "Freifunk Essen",
   "mapSigmaScale": 0.5,
   "showContact": true,
