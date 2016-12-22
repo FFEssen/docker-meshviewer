@@ -7,14 +7,14 @@ ENV DEBIAN_PRIORITY critical
 ENV DEBCONF_NOWARNINGS yes
 
 ARG build_dir="/usr/src/meshviewer"
-ARG run_dir="/var/www/"
+ARG run_dir="/var/www/html/"
 ARG git_url="https://github.com/ffnord/meshviewer"
 ARG version="v4"
 
 # update debian and install packages
 RUN apt-get update && apt-get -y upgrade && \
     apt-get -y install apache2 npm ruby-sass git && \
-    rm /var/www/index.html
+    rm /var/www/html/index.html
 
 #create dirs and add config
 RUN mkdir ${run_dir} && \
