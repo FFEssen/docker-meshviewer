@@ -6,10 +6,10 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV DEBIAN_PRIORITY critical
 ENV DEBCONF_NOWARNINGS yes
 
-ARG build_dir "/usr/src/meshviewer"
-ARG run_dir "/var/www/"
-ARG git_url "https://github.com/ffnord/meshviewer"
-ARG version "v4"
+ARG build_dir="/usr/src/meshviewer"
+ARG run_dir="/var/www/"
+ARG git_url="https://github.com/ffnord/meshviewer"
+ARG version="v4"
 
 # update debian and install packages
 RUN apt-get update && apt-get -y upgrade \
