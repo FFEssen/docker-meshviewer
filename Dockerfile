@@ -10,6 +10,7 @@ ARG build_dir="/usr/src/meshviewer"
 ARG run_dir="/var/www/html/"
 ARG git_url="https://github.com/ffnord/meshviewer"
 ARG version="v4"
+ARG config="https://raw.githubusercontent.com/FFEssen/docker-meshviewer/master/config.json"
 
 # update debian and install packages
 RUN apt-get update && apt-get -y upgrade && \
@@ -19,7 +20,7 @@ RUN apt-get update && apt-get -y upgrade && \
 #create dirs and add config
 RUN mkdir ${build_dir}
 
-ADD config.js ${run_dir}/config.js
+ADD ${config} ${run_dir}/config.js
 
 #npm and grunt
 RUN cd ${build_dir} && \
