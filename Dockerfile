@@ -22,14 +22,14 @@ RUN mkdir ${build_dir}
 
 ADD ${config} ${run_dir}/config.js
 
+#clone meshviewer
+RUN git clone ${git_url} ${version} ${build_dir}
+
 #npm and grunt
 RUN cd ${build_dir} && \
     npm install && \
     npm install bower grunt-cli && \
-    node_modules/.bin/bower --allow-root --config.interactive=false install
-
-#clone meshviewer
-RUN git clone ${git_url} ${version} ${build_dir}
+    node_modules/.bin/bower --allow-root --config.interactive=false instal
 
 #build the monster
 RUN node_modules/.bin/grunt
