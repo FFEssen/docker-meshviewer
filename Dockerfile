@@ -17,8 +17,7 @@ RUN apt-get update && apt-get -y upgrade && \
     rm /var/www/html/index.html
 
 #create dirs and add config
-RUN mkdir ${run_dir} && \
-    mkdir ${build_dir}
+RUN mkdir ${build_dir}
 
 ADD config.js ${run_dir}/config.js
 
