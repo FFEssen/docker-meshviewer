@@ -12,20 +12,20 @@ ARG git_url="https://github.com/ffnord/meshviewer"
 ARG version="v4"
 
 # update debian and install packages
-RUN apt-get update && apt-get -y upgrade\
-    apt-get -y install apache2 npm ruby-sass git\
+RUN apt-get update && apt-get -y upgrade && \
+    apt-get -y install apache2 npm ruby-sass git && \
     rm /var/www/index.html
 
 #create dirs and add config
-RUN mkdir ${run_dir}\
+RUN mkdir ${run_dir} && \
     mkdir ${build_dir}
 
 ADD config.js ${run_dir}/config.js
 
 #npm and grunt
-RUN cd ${build_dir}
-    npm install\
-    npm install bower grunt-cli
+RUN cd ${build_dir} && \
+    npm install && \
+    npm install bower grunt-cli && \
     node_modules/.bin/bower --allow-root --config.interactive=false install
 
 #clone meshviewer
