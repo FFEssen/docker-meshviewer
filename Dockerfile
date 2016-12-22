@@ -19,8 +19,8 @@ RUN apt-get update && apt-get -y upgrade && \
 
 #create dirs and add config
 RUN mkdir ${build_dir}
-
 ADD ${config} ${run_dir}/config.js
+ADD ${config} ${build_dir}/config.js
 
 #clone meshviewer
 RUN git clone ${git_url} ${version} ${build_dir}
