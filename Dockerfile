@@ -17,8 +17,7 @@ RUN apt-get update && apt-get -y upgrade && \
     apt-get -y install apache2 npm ruby-sass git && \
     rm /var/www/html/index.html
 
-#create dirs and add config
-RUN mkdir ${build_dir}
+#add config
 ADD ${config} ${run_dir}/config.js
 ADD ${config} ${build_dir}/config.js
 
