@@ -23,7 +23,7 @@ ADD ${config} ${run_dir}/config.js
 ADD ${config} ${build_dir}/config.js
 
 #clone meshviewer
-RUN git clone ${git_url} ${version} ${build_dir}
+RUN git clone ${git_url} -t ${version} ${build_dir}
 
 #npm and grunt
 RUN cd ${build_dir} && \
