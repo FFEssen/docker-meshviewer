@@ -14,8 +14,12 @@ ARG config="https://raw.githubusercontent.com/FFEssen/docker-meshviewer/master/c
 
 # update debian and install packages
 RUN apt-get update && apt-get -y upgrade && \
-    apt-get -y install apache2 npm ruby-sass git && \
+    apt-get -y install apache2 curl ruby-sass git && \
     rm /var/www/html/index.html
+
+# Install latest nodejs
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs
 
 #clone meshviewer
 RUN git clone ${git_url} -b ${version} ${build_dir}
@@ -24,11 +28,12 @@ RUN git clone ${git_url} -b ${version} ${build_dir}
 ADD ${config} ${run_dir}/config.js
 ADD ${config} ${build_dir}/config.js
 
+WORKDIR ${build_dir}
+
 #npm and grunt
-RUN cd ${build_dir} && \
-    npm install && \
+RUN npm install && \
     npm install bower grunt-cli && \
-    node_modules/.bin/bower --allow-root --config.interactive=false instal
+    node_modules/.bin/bower --allow-root --config.interactive=false install
 
 #build the monster
 RUN node_modules/.bin/grunt
