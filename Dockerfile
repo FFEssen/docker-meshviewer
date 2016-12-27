@@ -10,7 +10,6 @@ ARG build_dir="/usr/src/meshviewer"
 ARG run_dir="/var/www/html/"
 ARG git_url="https://github.com/ffnord/meshviewer"
 ARG version="v4"
-ARG config="https://raw.githubusercontent.com/FFEssen/docker-meshviewer/master/config.json"
 
 # update debian and install packages
 RUN apt-get update && apt-get -y upgrade && \
@@ -25,8 +24,7 @@ RUN apt-get install -y nodejs
 RUN git clone ${git_url} -b ${version} ${build_dir}
 
 #add config
-ADD ${config} ${run_dir}/config.js
-ADD ${config} ${build_dir}/config.js
+ADD config.json ${run_dir}/config.json
 
 WORKDIR ${build_dir}
 
